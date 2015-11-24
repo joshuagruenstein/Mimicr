@@ -1,0 +1,13 @@
+#errorbox {
+	background: #ffb3b3 none repeat scroll 0% 0%;
+	text-align: center;
+	border-radius: 4px;
+	font-size: 1rem;
+	text-transform: uppercase;
+	height: 30px;
+	line-height: 30px;
+	margin-bottom: 0.75rem;
+	font-weight: 600;
+	letter-spacing: 0.1rem;
+	display: none;
+}
