@@ -31,11 +31,11 @@
 }
 
 #indiv {
-	display:none;
+	display:inline;
 }
 
 #outdiv {
-	display:visible;
+	display:none;
 }
 
 #outbox {

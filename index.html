@@ -4,6 +4,7 @@
 <head>
 	<title>Mimicr: Machine Learning</title>
 
+	<meta charset="UTF-8"> 
 	<meta name="description" content="Text generation using recurrent neural networks.">
 	<meta name="author" content="by Joshua Gruenstein and Michael Truell">
 
@@ -17,41 +18,39 @@
 
 	<link rel="stylesheet" href="style/index.css" />
 	<link rel="stylesheet" href="style/modal.css" />
-
 </head>
 
 <body>
 
-	<div class="github-fork-ribbon-wrapper right">
-		<div class="github-fork-ribbon">
-			<a href="https://github.com/joshuagruenstein/Mimicr">Fork me on GitHub</a>
-		</div>
+<div class="github-fork-ribbon-wrapper right">
+	<div class="github-fork-ribbon">
+		<a href="https://github.com/joshuagruenstein/Mimicr">Fork me on GitHub</a>
 	</div>
+</div>
 
-	<div class="container">
-		<div class="row">
-			<div class="six columns" style="margin-top: 25%">
-				<h4>Mimicr: Text Generation using Machine Learning</h4>
-				<p>Input text and watch an artificial neural network train itself to follow its form.  For example, input a sample of your favorite language and watch Mimicr evolve to communicate.  Or input a sample of a famous author's works and see Mimicr learn to replicate his/her style.  The possibilities are endless.</p>
-			</div>
-			<div class="six columns" style="margin-top: 25%" id="indiv">
-				<form>
-					<label for="sample">Sample Text</label>
-					<textarea class="u-full-width" placeholder="Call me Ishmael. Some years ago-never mind how long precisely-having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off-then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.
-					" id="sample"></textarea>
+<div class="container">
+	<div class="row">
+		<div class="six columns" style="margin-top: 25%">
+			<h4>Mimicr: Text Generation using Machine Learning</h4>
+			<p>Input text and watch an artificial neural network train itself to follow its form.  For example, input a sample of your favorite language and watch Mimicr evolve to communicate.  Or input a sample of a famous author's works and see Mimicr learn to replicate his/her style.  The possibilities are endless.</p>
+		</div>
+		<div class="six columns" style="margin-top: 25%" id="indiv">
+			<form>
+				<label for="sample">Sample Text</label>
+				<textarea class="u-full-width" placeholder="Call me Ishmael. Some years ago-never mind how long precisely-having little or no money in my purse, and nothing particular to interest me on shore, I thought I would sail about a little and see the watery part of find myself growing grim about the mouth; whenever it is a damp, drizzly November in my soul; whenever I find myself involuntarily pausing before coffin warehouses, and bringing up the rear of every funeral I meet; and especially whenever my hypos get such an upper hand of me, that it requires a strong moral principle to prevent me from deliberately stepping into the street, and methodically knocking people's hats off-then, I account it high time to get to sea as soon as I can. This is my substitute for pistol and ball. With a philosophical flourish Cato throws himself upon his sword; I quietly take to the ship. There is nothing surprising in this. If they but knew it, almost all men in their degree, some time or other, cherish very nearly the same feelings towards the ocean with me.
+				" id="sample"></textarea>
 
-					<div id="errorbox" class="row">
-						<div class="u-max-full-width">
-							we recommend more than 100,000 characters.
-						</div>
+				<div id="errorbox" class="row">
+					<div class="u-max-full-width">
+						we recommend more than 100,000 characters.
 					</div>
+				</div>
 
-					<label class="cookiebox">
-						<input type="checkbox">
-						<span class="label-body">Run in background (uses cookies)</span>
-					</label>
-					<button class="button-primary">Begin</button>
-				</form>
+				<label class="cookiebox">
+					<input type="checkbox">
+					<span class="label-body">Run in background (uses cookies)</span>
+				</label>
+				<input type="button" id="begin" value="begin" class="button-primary" />
 			</form>
 		</div>
 		<div class="six columns" style="margin-top: 25%" id="outdiv">
@@ -68,7 +67,7 @@
 						Or would I?
 					</div>
 				</div>
-				<button class="button-primary">stop</button>
+				<input type="button" id="stop" value="stop" class="button-primary" />
 			</form>
 		</div>
 	</div>
@@ -97,6 +96,9 @@
 
 	</div>
 </div>
+
+<script src="lib/js.cookie.js"></script>
+<script src="script/index.js"></script>
 
 </body>
 </html>
