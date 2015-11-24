@@ -14,9 +14,9 @@
 	<link rel="stylesheet" href="lib/normalize.css" />
 	<link rel="stylesheet" href="lib/skeleton.css" />
 	<link rel="stylesheet" href="lib/gh-fork-ribbon.css" />
-	<link rel="stylesheet" href="lib/spinner.css" type="text/css">
 
 	<link rel="stylesheet" href="style/index.css" />
+	<link rel="stylesheet" href="style/modal.css" />
 
 </head>
 
@@ -42,7 +42,7 @@
 
 					<div id="errorbox" class="row">
 						<div class="u-max-full-width">
-							we recommend more than 2000 characters.
+							we recommend more than 100,000 characters.
 						</div>
 					</div>
 
@@ -71,6 +71,30 @@
 				<button class="button-primary">stop</button>
 			</form>
 		</div>
+	</div>
+</div>
+
+<footer>
+	<div id="footerleft">
+		Built with love by <a href="https://github.com/joshuagruenstein">@joshuagruenstein</a> and <a href="https://github.com/truell20">@truell20</a>.
+	</div>
+	<div id="footerright">
+		<a href="#donate">donate</a>
+	</div>
+</footer>
+
+<div id="donate" class="modalDialog">
+	<div>
+		<a href="#close" title="Close" class="close">X</a>
+		<h2>Donate</h2>
+		<p>Mimicr does computation serverside, and therefore costs significant money to run. Help us pay for server time by donating with Bitcoin.</p>
+		<div id="doninfo">
+			<a href="bitcoin:1AZktGEqqxEzMWXmMvKRr45PSyfUVFEV3Z?amount=0.1&label=Mimicr">
+				<img src="img/donate.png" />
+			</a>
+			<p>1AZktGEqqxEzMWXmMvKRr45PSyfUVFEV3Z</p>
+		</div>
+
 	</div>
 </div>
 

@@ -31,15 +31,54 @@
 }
 
 #indiv {
-	display:visible;
+	display:none;
 }
 
 #outdiv {
-	display:none;
+	display:visible;
 }
 
 #outbox {
 	pointer-events: none;
+}
+
+footer {
+	background: none repeat scroll 0 0 #33C3F0;
+	position:absolute;
+	bottom:0px;
+	color: #fff;
+	font-size: 1.2rem;
+	padding-bottom: .5rem;
+	padding-top: .8rem;
+	width: 100%;
+	clear: both;
+}
+
+footer a {
+	color:#fff;
+	text-decoration:none;
+	transition: font-weight 0.2s;
+}
+
+footer a:hover {
+	color:#fff;
+	font-weight: bold;
+}
+
+#footerleft {
+	float:left;
+	padding-left:1rem;
+}
+
+#footerright {
+	float:right;
+	padding-right:1rem;
+}
+
+#doninfo {
+	text-align:center;
+	margin-top:-1rem;
+	overflow: scroll;
 }
 
 .spinner {
