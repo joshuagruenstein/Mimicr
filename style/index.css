@@ -1,3 +1,7 @@
+.maincol {
+	margin-top: 20%;
+}
+
 #errorbox {
 	background: #ffb3b3 none repeat scroll 0% 0%;
 	text-align: center;
