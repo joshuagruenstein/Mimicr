@@ -1,4 +1,4 @@
-var backendURL = "localhost:4000"
+var backendURL = "http://localhost:3000"
 
 function createThread(input) {
 	var result = $.ajax({
@@ -16,19 +16,28 @@ function sampleThread(index) {
 		url: backendURL, 
 		async: false,
 		method: "GET",
-		data: {index: index}
+		data: {samplingIndex: index}
     });
 
     return result.responseText
 }
 
-function endThread(index) {
-
+function endThread(index, async) {
+	var result = $.ajax({
+		url: backendURL, 
+		async: async,
+		method: "GET",
+		data: {endingIndex: index}
+    });
 }
 
 $(document).ready(function() {
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
+
+	console.log(createThread("abc"))
+	console.log(createThread("def"))
+	console.log(sampleThread(1))
 
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
