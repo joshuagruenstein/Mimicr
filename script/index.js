@@ -1,6 +1,3 @@
-var outdiv = document.getElementById("outdiv")
-var indiv = document.getElementById("indiv")
-
 function createThread(input) {
 	// @truell20 you can add this stuff
 
@@ -11,42 +8,47 @@ function endThread(index) {
 	// @truell20 this as well
 }
 
-document.getElementById('begin').onclick = function() {
-	var errorBox = document.getElementById("errorbox")
-	var sample = document.getElementById("sample").value
-	if (sample.length >= 100000) {
-		errorBox.style.display = "none"
-		var index = createThread(sample)
+$(document).ready(function() {
+	var outdiv = $("#outdiv")
+	var indiv = $("#indiv")
 
-		if (document.getElementById('cookiecheck').checked) {
-			Cookies.set('mimicr',index,{ expires: 2 })
-		} else gIndex = index;
+	$('#begin').click(function() {
+		var errorBox = $("#errorbox")
+		var sample = $("#sample").val()
+		if (sample.length >= 100000) {
+			errorBox.css("display", "none")
+			var index = createThread(sample)
 
-		outdiv.style.display = "block"
-		indiv.style.display = "none"
-	} else errorBox.style.display = "block"
-}
+			if ($('#cookiecheck').attr("checked")) {
+				Cookies.set('mimicr',index,{ expires: 2 })
+			} else gIndex = index;
 
-document.getElementById('stop').onclick = function() {
-	endThread(Cookies.get('mimicr'))
-	Cookies.remove('mimicr')
+			outdiv.css("display", "block")
+			indiv.css("display", "none")
+		} else errorBox.css("display", "block")
+	})
 
-	outdiv.style.display = "none"
-	indiv.style.display = "block"
-}
+	$('#stop').click(function() {
+		endThread(Cookies.get('mimicr'))
+		Cookies.remove('mimicr')
 
-window.onbeforeunload = function(e) {
-	if (outdiv.style.display === "block") {
-		if (! Cookies.get('mimicr')) {
-			endThread(gIndex)
-		}
-	} 
-}
+		outdiv.css("display", "none")
+		indiv.css("display", "block")
+	})
 
-if (! Cookies.get('mimicr')) {
-	outdiv.style.display = "none"
-	indiv.style.display = "block"
-} else {
-	outdiv.style.display = "block"
-	indiv.style.display = "none"
-}
+	window.onbeforeunload = function(e) {
+		if (outdiv.css("display") === "block") {
+			if (! Cookies.get('mimicr')) {
+				endThread(gIndex)
+			}
+		} 
+	}
+
+	if (! Cookies.get('mimicr')) {
+		outdiv.css("display", "none")
+		indiv.css("display", "block")
+	} else {
+		outdiv.css("display", "block")
+		indiv.css("display", "none")
+	}
+})

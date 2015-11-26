@@ -13,6 +13,7 @@ def runRobot(instring, index):
 	while True:
 		outputs[index] = instring
 		sleep(0.1)
+
 def chooseFreeIndex():
 	global highestIndex, openIndexes
 	print(highestIndex)
@@ -22,6 +23,7 @@ def chooseFreeIndex():
 		return int(highestIndex-1)
 	else:
 		return openIndexes.pop(0)
+		
 @Request.application
 def application(request):
 	global threads
