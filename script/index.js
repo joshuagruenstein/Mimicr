@@ -1,11 +1,29 @@
-function createThread(input) {
-	// @truell20 you can add this stuff
+var backendURL = "localhost:4000"
 
-	return 5
+function createThread(input) {
+	var result = $.ajax({
+		url: backendURL, 
+		async: false,
+		method: "GET",
+		data: {input: input}
+    });
+
+    return parseInt(result.responseText)
+}
+
+function sampleThread(index) {
+	var result = $.ajax({
+		url: backendURL, 
+		async: false,
+		method: "GET",
+		data: {index: index}
+    });
+
+    return result.responseText
 }
 
 function endThread(index) {
-	// @truell20 this as well
+
 }
 
 $(document).ready(function() {

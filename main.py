@@ -3,45 +3,64 @@ import threading
 from time import sleep
 import numpy as np
 
-outputs = []
-openIndexes = []
+class WorkerThread(threading.Thread):
+	def __init__(self, input):
+		super(WorkerThread, self).__init__()
+		self.input = input
+		self.output = ""
+		self.keepRunning = True
+
+	def run(self):
+		while self.keepRunning == True:
+			self.output = self.input
+			sleep(0.1)
+
+
 threads = []
+openIndexes = []
 highestIndex = 0
 
-def runRobot(instring, index):
-	global outputs
-	while True:
-		outputs[index] = instring
-		sleep(0.1)
+def startThread(input):
+	global highestIndex, openIndexes, threads
 
-def chooseFreeIndex():
-	global highestIndex, openIndexes
-	print(highestIndex)
+	index = -1
 	if len(openIndexes) == 0:
 		highestIndex += 1
-		outputs.append("")
-		return int(highestIndex-1)
+		threads.append(None)
+		index = int(highestIndex-1)
 	else:
-		return openIndexes.pop(0)
-		
+		index = openIndexes.pop(0)
+
+	thread = WorkerThread(input)
+	threads[index] = thread
+	thread.start()
+	return index
+
+def sampleThread(index):
+	global threads
+
+	return threads[index].output
+
+def endThread(index):
+	global threads, openIndexes
+
+	threads[index].keepRunning = False
+	openIndexes.append(index)
+
 @Request.application
 def application(request):
-	global threads
 	instring = request.args.get('input', 'null')
-	index = request.args.get('index','null')
-	if instring == "null" and index == "null":
-		return Response("null")
+	samplingIndex = request.args.get('samplingIndex','null')
+	endingIndex = request.args.get('endingIndex','null')
 
-	print("process")
-	if index == 'null':
-		newIndex = chooseFreeIndex()
-		thread = threading.Thread(target=runRobot, args=(instring, newIndex,))
-		threads.append(thread)
-		thread.start()
-		return Response(str(newIndex))
-
-	mostRecent = outputs[int(index)]
-	return Response(mostRecent)
+	if instring != 'null':
+		return Response(str(startThread(instring)))
+	if samplingIndex != 'null':
+		return Response(sampleThread(int(samplingIndex)))
+	if endingIndex != 'null':
+		endThread(int(endingIndex))
+		return Response("Success")
+	return Response("null") 	
 
 if __name__ == '__main__':
 	from werkzeug.serving import run_simple
