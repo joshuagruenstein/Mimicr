@@ -25,10 +25,13 @@ def chooseFreeIndex():
 @Request.application
 def application(request):
 	global threads
-	instring = request.args.get('input', 'noinput')
-	index = request.args.get('index','noindex')
+	instring = request.args.get('input', 'null')
+	index = request.args.get('index','null')
+	if instring == "null" and index == "null":
+		return Response("null")
+
 	print("process")
-	if index == 'noindex':
+	if index == 'null':
 		newIndex = chooseFreeIndex()
 		thread = threading.Thread(target=runRobot, args=(instring, newIndex,))
 		threads.append(thread)
@@ -40,4 +43,4 @@ def application(request):
 
 if __name__ == '__main__':
 	from werkzeug.serving import run_simple
-	run_simple('localhost', 4000, application)
+	run_simple('localhost', 3000, application)
