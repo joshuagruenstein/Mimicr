@@ -2,18 +2,21 @@ from werkzeug.wrappers import Request, Response
 import threading
 from time import sleep
 import numpy as np
+from LSTM import *
 
 class WorkerThread(threading.Thread):
-	def __init__(self, input):
+	def __init__(self, input, charModel):
 		super(WorkerThread, self).__init__()
 		self.input = input
 		self.output = ""
 		self.keepRunning = True
-
+		self.charModel = charModel
 	def run(self):
 		while self.keepRunning == True:
-			self.output = self.input
+			self.output = self.charModel.train(500)
+			print(self.output)
 			sleep(0.1)
+			
 
 
 threads = []
@@ -31,7 +34,7 @@ def startThread(input):
 	else:
 		index = openIndexes.pop(0)
 
-	thread = WorkerThread(input)
+	thread = WorkerThread(input, CharacterModel(input))
 	threads[index] = thread
 	thread.start()
 	return index
