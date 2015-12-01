@@ -5,13 +5,14 @@ import numpy as np
 from LSTM import *
 
 class WorkerThread(threading.Thread):
-	def __init__(self, input, charModel):
+	def __init__(self, input):
 		super(WorkerThread, self).__init__()
 		self.input = input
 		self.output = ""
 		self.keepRunning = True
-		self.charModel = charModel
+		print(self.input)
 	def run(self):
+		self.charModel = CharacterModel(self.input)
 		while self.keepRunning == True:
 			self.output = self.charModel.train(500)
 			print(self.output)
@@ -34,7 +35,7 @@ def startThread(input):
 	else:
 		index = openIndexes.pop(0)
 
-	thread = WorkerThread(input, CharacterModel(input))
+	thread = WorkerThread(input)
 	threads[index] = thread
 	thread.start()
 	return index
