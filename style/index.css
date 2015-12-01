@@ -42,6 +42,42 @@
 	display:none;
 }
 
+#compdiv {
+	display:none;
+}
+
+#spinbox {
+	margin: 0 auto;
+	height: 10em;
+	width: 10em;
+	text-align: center;
+	position: relative;
+}
+
+
+.superspinner {
+	height: 10em;
+	width: 10em;
+	animation: rotate 2s infinite linear;
+	border: 8px solid #33C3F0;
+	border-right-color: transparent;
+	border-radius: 50%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.supercenter {
+	text-align: center;
+	position: absolute;
+  	top: 1.5em;
+  	left: -1.25em;
+  	width:10em;
+  	height:10em;
+	font-weight: 300;
+  	font-size:1.5em;
+}
+
 #outbox {
 	pointer-events: none;
 }
