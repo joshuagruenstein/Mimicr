@@ -2,7 +2,7 @@ from werkzeug.wrappers import Request, Response
 import threading
 from time import sleep
 import numpy as np
-from LSTM import *
+from CharacterModel import *
 
 class WorkerThread(threading.Thread):
 	def __init__(self, input):

@@ -1,37 +1,46 @@
 var backendURL = "http://localhost:3000/"
 
-function createThread(input) {
-	var result = $.ajax({
+function createThread(input, callback) {
+	$.ajax({
 		url: backendURL, 
-		async: false,
+		async: true,
 		method: "GET",
-		data: {input: input}
-    });
+		data: {input: input},
+		success: function(result) {
+			callback(result)
+		}
+	});
 }
 
-function sampleThread(index) {
-	var result = $.ajax({
+function sampleThread(index, callback) {
+	$.ajax({
 		url: backendURL, 
-		async: false,
+		async: true,
 		method: "GET",
-		data: {samplingIndex: index}
-    });
-
-    return result.responseText
+		data: {samplingIndex: index},
+		success: function(result) {
+			callback(result)
+		}
+	});
 }
 
-function endThread(index) {
-	var result = $.ajax({
+function endThread(index, callback) {
+	$.ajax({
 		url: backendURL, 
-		async: false,
+		async: true,
 		method: "GET",
-		data: {endingIndex: index}
-    });
+		data: {endingIndex: index},
+		success: function(result) {
+			callback(result)
+		}
+	});
 }
 
 $(document).ready(function() {
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
+	var timer = null
+	var index = -1
 	console.log("start")
 
 	$('#begin').click(function() {
@@ -39,7 +48,22 @@ $(document).ready(function() {
 		var sample = $("#sample").val()
 		if (sample.length >= 10) {
 			errorBox.css("display", "none")
-			var index = createThread(sample)
+
+			$("#inneroutbox").text("Loading...")
+
+			createThread(sample, function(result) {
+				index = parseInt(result)
+
+				timer = setTimeout(function() {
+					sampleThread(index, function(result) {
+						if(result === "") {
+							$("#inneroutbox").text("Compiling...")
+						} else {
+							$("#inneroutbox").text(result)
+						}
+					})
+				}, 5000)
+			})
 
 			if ($('#cookiecheck').attr("checked")) {
 				Cookies.set('mimicr',index,{ expires: 2 })
@@ -51,7 +75,11 @@ $(document).ready(function() {
 	})
 
 	$('#stop').click(function() {
-		endThread(Cookies.get('mimicr'))
+		if(timer != null) clearTimeout(timer)
+
+		endThread(Cookies.get('mimicr'), function() {
+			$("#inneroutbox").text("Bot shut down.")
+		})
 		Cookies.remove('mimicr')
 
 		outdiv.css("display", "none")
