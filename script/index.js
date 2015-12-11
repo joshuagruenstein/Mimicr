@@ -49,16 +49,21 @@ $(document).ready(function() {
 		if (sample.length >= 10) {
 			errorBox.css("display", "none")
 
-			$("#inneroutbox").text("Loading...")
+			$("#compdiv").css("display", "inline")
+			$("#outdiv").css("display", "none")
+			$("#indiv").css("display", "none")
 
 			createThread(sample, function(result) {
 				index = parseInt(result)
 
 				timer = setTimeout(function() {
 					sampleThread(index, function(result) {
-						if(result === "") {
-							$("#inneroutbox").text("Compiling...")
-						} else {
+						if(result !== "") {
+							if($("#compdiv").css("display") === "inline") {
+								$("#compdiv").css("display", "none")
+								$("#outdiv").css("display", "inline")
+								$("#indiv").css("display", "inline")
+							}
 							$("#inneroutbox").text(result)
 						}
 					})
@@ -77,9 +82,7 @@ $(document).ready(function() {
 	$('#stop').click(function() {
 		if(timer != null) clearTimeout(timer)
 
-		endThread(Cookies.get('mimicr'), function() {
-			$("#inneroutbox").text("Bot shut down.")
-		})
+		endThread(Cookies.get('mimicr'), null)
 		Cookies.remove('mimicr')
 
 		outdiv.css("display", "none")
