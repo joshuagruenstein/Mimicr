@@ -1,4 +1,4 @@
-var backendURL = "http://localhost:3000/"
+var backendURL = "http://192.241.160.197/DeepThinker:3000"
 
 function createThread(input, callback) {
 	$.ajax({
