@@ -2,7 +2,7 @@ var backendURL = "http://192.241.160.197:3000/"
 
 function createThread(input, callback) {
 	$.ajax({
-		url: backendURL, 
+		url: "http://192.241.160.197:3000/", 
 		async: true,
 		method: "GET",
 		data: {input: input},
@@ -51,7 +51,7 @@ $(document).ready(function() {
 
 			$("#compdiv").css("display", "inline")
 			$("#outdiv").css("display", "none")
-			$("#indiv").css("display", "none")
+			$("#indiv").css("display", "none")	
 
 			createThread(sample, function(result) {
 				index = parseInt(result)
