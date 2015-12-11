@@ -68,4 +68,4 @@ def application(request):
 
 if __name__ == '__main__':
 	from werkzeug.serving import run_simple
-	run_simple('localhost', 3000, application)
+	run_simple('192.241.160.197', 3000, application)
