@@ -1,8 +1,8 @@
-var backendURL = "http://192.241.160.197:3000/"
+var backendURL = "route.php"
 
 function createThread(input, callback) {
 	$.ajax({
-		url: "http://192.241.160.197:3000/", 
+		url: backendURL, 
 		async: true,
 		method: "GET",
 		data: {input: input},
