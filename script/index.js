@@ -62,9 +62,8 @@ $(document).ready(function() {
 							if($("#compdiv").css("display") === "inline") {
 								$("#compdiv").css("display", "none")
 								$("#outdiv").css("display", "inline")
-								$("#indiv").css("display", "inline")
-							}
-							$("#inneroutbox").text(result)
+								$("#indiv").css("display", "none")
+							} $("#inneroutbox").text(result)
 						}
 					})
 				}, 5000)
