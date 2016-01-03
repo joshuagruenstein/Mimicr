@@ -15,18 +15,15 @@
 
 
 	<script>
-		var a = ['one','two','three','four', 'five'];
+		var a = ['zero','one','two','three','four', 'five'];
 
 		function startTimer(time) {
-			document.getElementById("timeLeft").innerHTML = "in "+a[time-1]+((time==1)?" second":" seconds")
+			document.getElementById("timeLeft").innerHTML = "in "+a[time]+((time==1)?" second":" seconds")
 			if (time > 0) {
 				setTimeout(function() {
     				startTimer(time-1);
 				},1000)
-			} else {
-				document.getElementById("timeLeft").innerHTML = "now"
-				window.location.href = "/";
-			}
+			} else window.location.href = "/";
 		}
 	</script>
 </head>
