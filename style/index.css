@@ -2,6 +2,32 @@
 	margin-top: 20%;
 }
 
+#holder { 
+	border: 0.5rem dashed #ccc; 
+	width: 100%; 
+	margin: 20px auto;
+}
+
+#innerLiner {
+	width:100%;
+	margin-top:2rem;
+	margin:none;
+	padding:none;
+	text-align:center;
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.3rem;
+	text-transform: uppercase;
+}
+
+#holder.hover { 
+	border: 0.5rem dashed #0c0; 
+}
+
+.hidden { 
+	display: none !important;
+}
+
 #errorbox {
 	background: #ffb3b3 none repeat scroll 0% 0%;
 	text-align: center;

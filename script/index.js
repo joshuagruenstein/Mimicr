@@ -1,5 +1,59 @@
 var backendURL = "route.php"
 
+var holder = document.getElementById('holder'),
+tests = {
+	filereader: typeof FileReader != 'undefined',
+	dnd: 'draggable' in document.createElement('span'),
+	formdata: !!window.FormData,
+	progress: "upload" in new XMLHttpRequest
+}, 
+support = {
+	filereader: document.getElementById('filereader'),
+	formdata: document.getElementById('formdata'),
+	progress: document.getElementById('progress')
+},
+acceptedTypes = {
+	'text/plain': true
+},
+fileupload = document.getElementById('upload');
+"filereader formdata progress".split(' ').forEach(function (api) {
+	if (tests[api] === false) {
+		support[api].className = 'fail';
+	} else {
+		support[api].className = 'hidden';
+	}
+});
+
+function previewfile(file) {
+	if (tests.filereader === true && acceptedTypes[file.type] === true) {
+		var reader = new FileReader();
+		reader.onload = function (event) {
+			holder.innerHTML = '<p id="innerLiner">' + file.name + ' (' + (file.size ? (file.size/1024|0) + 'K' : '') +')</p>';
+		};
+		reader.readAsDataURL(file);
+	}  else {
+		holder.innerHTML = '<p id="innerLiner">File unsupported</p>';
+		console.log(file);
+	}
+}
+
+if (tests.dnd) { 
+	holder.ondragover = function () { this.className = 'hover'; return false; };
+	holder.ondragend = function () { this.className = ''; return false; };
+	holder.ondrop = function (e) {
+		this.className = '';
+		e.preventDefault();
+		previewfile(e.dataTransfer.files[0]);
+		readfiles(e.dataTransfer.files[0]);
+	}
+} else {
+	fileupload.className = 'hidden';
+	fileupload.querySelector('input').onchange = function () {
+		previewfile(this.files[0])
+		readfiles(this.files[0]);
+	};
+}
+
 function createThread(input, callback) {
 	$.ajax({
 		url: backendURL, 
@@ -81,7 +135,7 @@ $(document).ready(function() {
 	$('#stop').click(function() {
 		if(timer != null) clearTimeout(timer)
 
-		endThread(Cookies.get('mimicr'), null)
+			endThread(Cookies.get('mimicr'), null)
 		Cookies.remove('mimicr')
 
 		outdiv.css("display", "none")
