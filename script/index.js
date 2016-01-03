@@ -72,7 +72,7 @@ function createThread(input, callback) {
 		data: {input: input},
 		success: function(result) {
 			console.log("create: " + result)
-			callback(result)
+			if(callback != null) callback(result)
 		}
 	});
 }
@@ -85,7 +85,7 @@ function sampleThread(index, callback) {
 		data: {samplingIndex: index},
 		success: function(result) {
 			console.log("sample: " + result)
-			callback(result)
+			if(callback != null) callback(result)
 		}
 	});
 }
@@ -98,7 +98,7 @@ function endThread(index, callback) {
 		data: {endingIndex: index},
 		success: function(result) {
 			console.log("end: " + result)
-			callback(result)
+			if(callback != null) callback(result)
 		}
 	});
 }
@@ -138,9 +138,7 @@ $(document).ready(function() {
 				}, 5000)
 			})
 
-			if ($('#cookiecheck').attr("checked")) {
-				Cookies.set('mimicr',index,{ expires: 2 })
-			} else gIndex = index;
+			gIndex = index;
 
 			outdiv.css("display", "block")
 			indiv.css("display", "none")
@@ -150,26 +148,16 @@ $(document).ready(function() {
 	$('#stop').click(function() {
 		if(timer != null) clearTimeout(timer)
 
-			endThread(Cookies.get('mimicr'), null)
-		Cookies.remove('mimicr')
-
 		outdiv.css("display", "none")
 		indiv.css("display", "block")
 	})
 
 	window.onbeforeunload = function(e) {
 		if (outdiv.css("display") === "block") {
-			if (! Cookies.get('mimicr')) {
-				endThread(gIndex)
-			}
+			endThread(gIndex)
 		} 
 	}
 
-	if (! Cookies.get('mimicr')) {
-		outdiv.css("display", "none")
-		indiv.css("display", "block")
-	} else {
-		outdiv.css("display", "block")
-		indiv.css("display", "none")
-	}
+	outdiv.css("display", "none")
+	indiv.css("display", "block")
 })
