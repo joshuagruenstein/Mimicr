@@ -54,11 +54,21 @@ if (tests.dnd) {
 	};
 }
 
+var fileContents = null;
+function readfiles(file) {
+	var fr = new FileReader();
+	fr.onload = function() {
+		fileContents = fr.result;
+		console.log(fileContents)
+	};
+	fr.readAsText(file);
+}
+
 function createThread(input, callback) {
 	$.ajax({
 		url: backendURL, 
 		async: true,
-		method: "GET",
+		method: "POST",
 		data: {input: input},
 		success: function(result) {
 			console.log("create: " + result)
@@ -103,7 +113,8 @@ $(document).ready(function() {
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
 		//var sample = $("#sample").val()
-		var sample = "sdafjlasjdflaskjdfljasdlfjaslkdjflaskdjfljasdf"
+		var sample = fileContents
+		console.log(fileContents)
 		if (sample.length >= 10) {
 			errorBox.css("display", "none")
 

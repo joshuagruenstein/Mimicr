@@ -58,19 +58,27 @@ def endThread(index):
 
 @Request.application
 def application(request):
-	instring = request.args.get('input', 'null')
+	instring = None
+	try:
+		instring = request.form['input']
+		print("INSTRING WORKED")
+	except Exception as e:
+		pass
 	samplingIndex = request.args.get('samplingIndex','null')
 	endingIndex = request.args.get('endingIndex','null')
 
 	print("REQUEST")
 
-	if instring != 'null':
+	if instring != None:
+		print("IN STRING")
+		print(instring)
 		return Response(str(startThread(instring)))
 	if samplingIndex != 'null':
 		return Response(sampleThread(int(samplingIndex)))
 	if endingIndex != 'null':
 		endThread(int(endingIndex))
 		return Response("Success")
+	print("NO PARAMETERS")
 	return Response("null") 	
 
 if __name__ == '__main__':
