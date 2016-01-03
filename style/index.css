@@ -144,7 +144,10 @@ footer a:hover {
 #doninfo {
 	text-align:center;
 	margin-top:-1rem;
-	overflow: scroll;
+}
+
+#bitAdr {
+	font-family: monospace;
 }
 
 .spinner {
