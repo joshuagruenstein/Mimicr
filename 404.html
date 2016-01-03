@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+	<title>Mimicr 404</title>
+
+	<meta charset="UTF-8"> 
+	<meta name="description" content="Text generation using recurrent neural networks.">
+	<meta name="author" content="by Joshua Gruenstein and Michael Truell">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<link rel="stylesheet" href="lib/normalize.css" />
+	<link rel="stylesheet" href="lib/skeleton.css" />
+
+
+	<script>
+		var a = ['one','two','three','four', 'five'];
+
+		function startTimer(time) {
+			document.getElementById("timeLeft").innerHTML = "in "+a[time-1]+((time==1)?" second":" seconds")
+			if (time > 0) {
+				setTimeout(function() {
+    				startTimer(time-1);
+				},1000)
+			} else {
+				document.getElementById("timeLeft").innerHTML = "now"
+				window.location.href = "/";
+			}
+		}
+	</script>
+</head>
+
+
+
+<body onload="startTimer(5)">
+
+<div class="container">
+	<div style="margin-top:15%;">
+		<h1>Four-oh-four.</h1>
+		<p>You seem lost.  You will be automatically redirected to the main page <span id="timeLeft">in five seconds</span>.  Alternatively, click the button below.</p>
+		<a class="button button-primary" href="/">GO HOME</a>
+	</div>
+</div>
+
+</body>
+</html>
