@@ -16,9 +16,9 @@ class WorkerThread(threading.Thread):
 		print("done init")
 		print(self.input)
 	def run(self):
-		self.charModel = CharacterModel(self.input, 2, 100, 1)
+		self.charModel = CharacterModel(self.input)
 		while self.keepRunning == True:
-			self.output = self.charModel.train(2)
+			self.output = self.charModel.train(100)
 			print(self.output)
 			sleep(0.1)
 			
