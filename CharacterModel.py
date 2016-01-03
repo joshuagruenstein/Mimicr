@@ -7,8 +7,6 @@ import numpy as np
 class CharacterModel:
 
 	def __init__(self, inputText):
-		print("begin: ")
-		print(inputText)
 		# data I/O
 		self.data = inputText # should be simple plain text file
 		self.chars = list(set(self.data))
@@ -33,8 +31,6 @@ class CharacterModel:
 		self.mWxh, self.mWhh, self.mWhy = np.zeros_like(self.Wxh), np.zeros_like(self.Whh), np.zeros_like(self.Why)
 		self.mbh, self.mby = np.zeros_like(self.bh), np.zeros_like(self.by) # memory variables for Adagrad
 		self.smooth_loss = -np.log(1.0/self.vocab_size)*self.seq_length # loss at iteration 0
-
-		print("end init")
 
 	def lossFun(self, inputs, targets, hprev):
 		"""
@@ -102,8 +98,7 @@ class CharacterModel:
 
 			# forward self.seq_length characters through the net and fetch gradient
 			loss, dWxh, dWhh, dWhy, dbh, dby, hprev = self.lossFun(inputs, targets, hprev)
-			self.smooth_loss = self.smooth_loss * 0.999 + loss * 0.001
-			if n % 100 == 0: print('iter %d, loss: %f' % (n, self.smooth_loss)) # print progress
+			self.smooth_loss = self.smooth_loss * 0.999 + loss * 0.001 # print progress
 		  
 			# perform parameter update with Adagrad
 			for param, dparam, mem in zip([self.Wxh, self.Whh, self.Why, self.bh, self.by], 
@@ -114,6 +109,8 @@ class CharacterModel:
 
 			self.p += self.seq_length # move data pointer
 
+		print('iter %d, loss: %f' % (n, self.smooth_loss))
+		
 		sample_ix = self.sample(hprev, inputs[0], 200)
 		txt = ''.join(self.ix_to_char[ix] for ix in sample_ix)
 		return txt

@@ -7,19 +7,15 @@ from CharacterModel import *
 class WorkerThread(threading.Thread):
 	def __init__(self, input):
 		super(WorkerThread, self).__init__()
-		print("begin init")
 
 		self.input = input
 		self.output = ""
 		self.keepRunning = True
 
-		print("done init")
-		print(self.input)
 	def run(self):
 		self.charModel = CharacterModel(self.input)
 		while self.keepRunning == True:
 			self.output = self.charModel.train(100)
-			print(self.output)
 			sleep(0.1)
 			
 
@@ -40,7 +36,6 @@ def startThread(input):
 		index = openIndexes.pop(0)
 
 	thread = WorkerThread(input)
-	print("adding")
 	threads[index] = thread
 	thread.start()
 	return index
@@ -61,24 +56,18 @@ def application(request):
 	instring = None
 	try:
 		instring = request.form['input']
-		print("INSTRING WORKED")
 	except Exception as e:
 		pass
 	samplingIndex = request.args.get('samplingIndex','null')
 	endingIndex = request.args.get('endingIndex','null')
 
-	print("REQUEST")
-
 	if instring != None:
-		print("IN STRING")
-		print(instring)
 		return Response(str(startThread(instring)))
 	if samplingIndex != 'null':
 		return Response(sampleThread(int(samplingIndex)))
 	if endingIndex != 'null':
 		endThread(int(endingIndex))
 		return Response("Success")
-	print("NO PARAMETERS")
 	return Response("null") 	
 
 if __name__ == '__main__':
