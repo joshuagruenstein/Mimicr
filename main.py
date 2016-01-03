@@ -7,14 +7,18 @@ from CharacterModel import *
 class WorkerThread(threading.Thread):
 	def __init__(self, input):
 		super(WorkerThread, self).__init__()
+		print("begin init")
+
 		self.input = input
 		self.output = ""
 		self.keepRunning = True
+
+		print("done init")
 		print(self.input)
 	def run(self):
-		self.charModel = CharacterModel(self.input)
+		self.charModel = CharacterModel(self.input, 2, 100, 1)
 		while self.keepRunning == True:
-			self.output = self.charModel.train(500)
+			self.output = self.charModel.train(2)
 			print(self.output)
 			sleep(0.1)
 			
@@ -36,6 +40,7 @@ def startThread(input):
 		index = openIndexes.pop(0)
 
 	thread = WorkerThread(input)
+	print("adding")
 	threads[index] = thread
 	thread.start()
 	return index
@@ -57,6 +62,8 @@ def application(request):
 	samplingIndex = request.args.get('samplingIndex','null')
 	endingIndex = request.args.get('endingIndex','null')
 
+	print("REQUEST")
+
 	if instring != 'null':
 		return Response(str(startThread(instring)))
 	if samplingIndex != 'null':
@@ -68,4 +75,4 @@ def application(request):
 
 if __name__ == '__main__':
 	from werkzeug.serving import run_simple
-	run_simple('192.241.160.197', 3000, application)
+	run_simple('localhost', 3000, application)

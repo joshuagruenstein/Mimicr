@@ -61,6 +61,7 @@ function createThread(input, callback) {
 		method: "GET",
 		data: {input: input},
 		success: function(result) {
+			console.log("create: " + result)
 			callback(result)
 		}
 	});
@@ -73,6 +74,7 @@ function sampleThread(index, callback) {
 		method: "GET",
 		data: {samplingIndex: index},
 		success: function(result) {
+			console.log("sample: " + result)
 			callback(result)
 		}
 	});
@@ -85,6 +87,7 @@ function endThread(index, callback) {
 		method: "GET",
 		data: {endingIndex: index},
 		success: function(result) {
+			console.log("end: " + result)
 			callback(result)
 		}
 	});
@@ -99,7 +102,8 @@ $(document).ready(function() {
 
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
-		var sample = $("#sample").val()
+		//var sample = $("#sample").val()
+		var sample = "sdafjlasjdflaskjdfljasdlfjaslkdjflaskdjfljasdf"
 		if (sample.length >= 10) {
 			errorBox.css("display", "none")
 
@@ -110,7 +114,7 @@ $(document).ready(function() {
 			createThread(sample, function(result) {
 				index = parseInt(result)
 
-				timer = setTimeout(function() {
+				timer = setInterval(function() {
 					sampleThread(index, function(result) {
 						if(result !== "") {
 							if($("#compdiv").css("display") === "inline") {
