@@ -99,6 +99,8 @@ function endThread(index, callback) {
 }
 
 $(document).ready(function() {
+	$(".nano").nanoScroller();
+	
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
 	var timer = null
@@ -111,7 +113,6 @@ $(document).ready(function() {
 		if (sample.length >= 500 || sample.length <= 5000000) {
 			errorBox.css("display", "none")
 
-			$("#compdiv").css("display", "inline")
 			$("#outdiv").css("display", "none")
 			$("#indiv").css("display", "none")	
 
@@ -122,12 +123,8 @@ $(document).ready(function() {
 					sampleThread(index, function(result) {
 						if(result !== "") {
 							result.replace(/\n/g, "<br />")
-							if($("#compdiv").css("display") === "inline") {
-								$("#compdiv").css("display", "none")
-								$("#outdiv").css("display", "inline")
-								$("#indiv").css("display", "none")
-							} 
 							$("#inneroutbox").text(result)
+							$(".nano").nanoScroller();
 						}
 					})
 				}, 2000)
