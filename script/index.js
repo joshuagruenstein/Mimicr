@@ -127,11 +127,13 @@ $(document).ready(function() {
 				timer = setInterval(function() {
 					sampleThread(index, function(result) {
 						if(result !== "") {
+							result.replace(/\n/g, "<br />")
 							if($("#compdiv").css("display") === "inline") {
 								$("#compdiv").css("display", "none")
 								$("#outdiv").css("display", "inline")
 								$("#indiv").css("display", "none")
-							} $("#inneroutbox").text(result)
+							} 
+							$("#inneroutbox").text(result)
 						}
 					})
 				}, 2000)
