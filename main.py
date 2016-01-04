@@ -56,6 +56,8 @@ def application(request):
 	instring = None
 	try:
 		instring = request.form['input']
+		if len(instring) > 5000000:
+			return Response("null")
 	except Exception as e:
 		pass
 	samplingIndex = request.args.get('samplingIndex','null')

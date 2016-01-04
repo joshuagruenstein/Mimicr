@@ -112,10 +112,9 @@ $(document).ready(function() {
 
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
-		//var sample = $("#sample").val()
 		var sample = fileContents
 		console.log(fileContents)
-		if (sample.length >= 10) {
+		if (sample.length >= 500 || sample.length <= 5000000) {
 			errorBox.css("display", "none")
 
 			$("#compdiv").css("display", "inline")
