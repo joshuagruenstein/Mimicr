@@ -135,7 +135,7 @@ $(document).ready(function() {
 							} $("#inneroutbox").text(result)
 						}
 					})
-				}, 5000)
+				}, 2000)
 			})
 
 			gIndex = index;
