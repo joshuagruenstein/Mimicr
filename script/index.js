@@ -98,9 +98,7 @@ function endThread(index, callback) {
 	});
 }
 
-$(document).ready(function() {
-	$(".nano").nanoScroller();
-	
+$(document).ready(function() {	
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
 	var timer = null
@@ -122,9 +120,8 @@ $(document).ready(function() {
 				timer = setInterval(function() {
 					sampleThread(index, function(result) {
 						if(result !== "") {
-							result.replace(/\n/g, "<br />")
-							$("#inneroutbox").text(result)
-							$(".nano").nanoScroller();
+							result = result.replace(/(?:\r\n|\r|\n)/g, '<br />')
+							$("#inneroutbox").html(result)
 						}
 					})
 				}, 2000)

@@ -13,13 +13,11 @@
 	<link rel="stylesheet" href="lib/normalize.css" />
 	<link rel="stylesheet" href="lib/skeleton.css" />
 	<link rel="stylesheet" href="lib/gh-fork-ribbon.css" />
-	<link rel="stylesheet" href="lib/nanoscroller.css" />
 
 	<link rel="stylesheet" href="style/index.css" />
 	<link rel="stylesheet" href="style/modal.css" />
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-	<script src="lib/jquery.nanoscroller.min.js"></script>
 </head>
 
 <body>
@@ -50,9 +48,11 @@
 				<div class="row" >
 					<label for="sample" class="three columns">Learning...</label> <div class="spinner"></div>
 				</div>
-				<div id="outbox" class="row nano">
-					<div class="u-max-full-width nano-content" id="inneroutbox">
-						Loading...
+				<div id="outbox" class="row">
+					<div class="u-full-width" id="inoutbox">
+						<div id="inneroutbox">
+							Loading...
+						</div>
 					</div>
 				</div>
 				<input type="button" id="stop" value="stop" class="button-primary" />
