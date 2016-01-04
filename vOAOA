@@ -1,0 +1,81 @@
+USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+root         1  0.0  0.2  33476  2800 ?        Ss   15:57   0:00 /sbin/init
+root         2  0.0  0.0      0     0 ?        S    15:57   0:00 [kthreadd]
+root         3  0.0  0.0      0     0 ?        S    15:57   0:00 [ksoftirqd/0]
+root         5  0.0  0.0      0     0 ?        S<   15:57   0:00 [kworker/0:0H]
+root         7  0.0  0.0      0     0 ?        S    15:57   0:00 [rcu_sched]
+root         8  0.0  0.0      0     0 ?        S    15:57   0:00 [rcuos/0]
+root         9  0.0  0.0      0     0 ?        S    15:57   0:00 [rcu_bh]
+root        10  0.0  0.0      0     0 ?        S    15:57   0:00 [rcuob/0]
+root        11  0.0  0.0      0     0 ?        S    15:57   0:00 [migration/0]
+root        12  0.0  0.0      0     0 ?        S    15:57   0:00 [watchdog/0]
+root        13  0.0  0.0      0     0 ?        S<   15:57   0:00 [khelper]
+root        14  0.0  0.0      0     0 ?        S    15:57   0:00 [kdevtmpfs]
+root        15  0.0  0.0      0     0 ?        S<   15:57   0:00 [netns]
+root        16  0.0  0.0      0     0 ?        S<   15:57   0:00 [writeback]
+root        17  0.0  0.0      0     0 ?        S<   15:57   0:00 [kintegrityd]
+root        18  0.0  0.0      0     0 ?        S<   15:57   0:00 [bioset]
+root        19  0.0  0.0      0     0 ?        S<   15:57   0:00 [kworker/u3:0]
+root        20  0.0  0.0      0     0 ?        S<   15:57   0:00 [kblockd]
+root        21  0.0  0.0      0     0 ?        S<   15:57   0:00 [ata_sff]
+root        22  0.0  0.0      0     0 ?        S    15:57   0:00 [khubd]
+root        23  0.0  0.0      0     0 ?        S<   15:57   0:00 [md]
+root        24  0.0  0.0      0     0 ?        S<   15:57   0:00 [devfreq_wq]
+root        25  0.0  0.0      0     0 ?        S    15:57   0:00 [kworker/0:1]
+root        27  0.0  0.0      0     0 ?        S    15:57   0:00 [khungtaskd]
+root        28  0.0  0.0      0     0 ?        S    15:57   0:00 [kswapd0]
+root        29  0.0  0.0      0     0 ?        SN   15:57   0:00 [ksmd]
+root        30  0.0  0.0      0     0 ?        SN   15:57   0:00 [khugepaged]
+root        31  0.0  0.0      0     0 ?        S    15:57   0:00 [fsnotify_mark]
+root        32  0.0  0.0      0     0 ?        S    15:57   0:00 [ecryptfs-kthrea]
+root        33  0.0  0.0      0     0 ?        S<   15:57   0:00 [crypto]
+root        45  0.0  0.0      0     0 ?        S<   15:57   0:00 [kthrotld]
+root        46  0.0  0.0      0     0 ?        S    15:57   0:00 [kworker/u2:1]
+root        47  0.0  0.0      0     0 ?        S    15:57   0:00 [vballoon]
+root        48  0.0  0.0      0     0 ?        S    15:57   0:00 [scsi_eh_0]
+root        49  0.0  0.0      0     0 ?        S    15:57   0:00 [scsi_eh_1]
+root        70  0.0  0.0      0     0 ?        S<   15:57   0:00 [deferwq]
+root        71  0.0  0.0      0     0 ?        S<   15:57   0:00 [charger_manager]
+root       114  0.0  0.0      0     0 ?        S<   15:57   0:00 [kpsmoused]
+root       121  0.0  0.0      0     0 ?        S    15:57   0:00 [jbd2/vda1-8]
+root       122  0.0  0.0      0     0 ?        S<   15:57   0:00 [ext4-rsv-conver]
+root       136  0.0  0.0      0     0 ?        S    15:57   0:00 [kworker/0:2]
+root       245  0.0  0.0      0     0 ?        S<   15:57   0:00 [kworker/u3:1]
+root       317  0.0  0.0  19472   656 ?        S    15:57   0:00 upstart-udev-bridge --daemon
+root       326  0.0  0.1  43760  1568 ?        Ss   15:57   0:00 /lib/systemd/systemd-udevd --daemon
+root       396  0.0  0.0      0     0 ?        S<   15:57   0:00 [ttm_swap]
+root       533  0.0  0.0      0     0 ?        S<   15:57   0:00 [kvm-irqfd-clean]
+root       545  0.0  0.0  15388   716 ?        S    15:57   0:00 upstart-socket-bridge --daemon
+message+   702  0.0  0.1  39224  1264 ?        Ss   15:57   0:00 dbus-daemon --system --fork
+root       775  0.0  0.1  43448  1796 ?        Ss   15:57   0:00 /lib/systemd/systemd-logind
+syslog     784  0.0  0.1 255840  1372 ?        Ssl  15:57   0:00 rsyslogd
+root       805  0.0  0.0  15272   636 ?        S    15:57   0:00 upstart-file-bridge --daemon
+root       869  0.0  0.0  15816   960 tty4     Ss+  15:57   0:00 /sbin/getty -8 38400 tty4
+root       872  0.0  0.0  15816   960 tty5     Ss+  15:57   0:00 /sbin/getty -8 38400 tty5
+root       877  0.0  0.0  15816   952 tty2     Ss+  15:57   0:00 /sbin/getty -8 38400 tty2
+root       878  0.0  0.0  15816   956 tty3     Ss+  15:57   0:00 /sbin/getty -8 38400 tty3
+root       880  0.0  0.0  15816   960 tty6     Ss+  15:57   0:00 /sbin/getty -8 38400 tty6
+root       900  0.0  0.3  61368  3072 ?        Ss   15:57   0:00 /usr/sbin/sshd -D
+root       904  0.0  0.0   4364   668 ?        Ss   15:57   0:00 acpid -c /etc/acpi/events -s /var/run/acpid.socket
+root       905  0.0  0.1  23652  1040 ?        Ss   15:57   0:00 cron
+daemon     906  0.0  0.0  19136   164 ?        Ss   15:57   0:00 atd
+root       992  0.0  0.0  15816   948 tty1     Ss+  15:57   0:00 /sbin/getty -8 38400 tty1
+root      1115  0.0  0.0      0     0 ?        S    15:59   0:00 [kauditd]
+root     11536  0.0  0.0      0     0 ?        S    16:05   0:00 [kworker/u2:2]
+root     12451  0.0  1.3 188548 14220 ?        Ss   18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12454  0.0  0.7 188800  7876 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12455  0.0  0.7 188808  7476 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12457  0.0  0.7 188800  7464 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12458  0.0  0.7 188808  7492 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12463  0.0  0.7 188808  7492 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12464  0.0  0.7 188808  7480 ?        S    18:21   0:00 /usr/sbin/apache2 -k start
+www-data 12469  0.0  0.7 188808  7476 ?        S    18:22   0:00 /usr/sbin/apache2 -k start
+www-data 12470  0.0  0.7 188808  7464 ?        S    18:22   0:00 /usr/sbin/apache2 -k start
+www-data 12471  0.0  0.7 188808  7476 ?        S    18:22   0:00 /usr/sbin/apache2 -k start
+root     12635  0.0  0.4 105636  4308 ?        Ss   18:24   0:00 sshd: root@pts/0    
+root     12683  0.0  0.3  22628  3812 pts/0    Ss   18:24   0:00 -bash
+root     12699  0.0  0.4 105636  4308 ?        Ss   18:34   0:00 sshd: root@pts/4    
+root     12741  0.0  0.3  22628  3632 pts/4    Ss+  18:34   0:00 -bash
+www-data 12818  0.0  0.5 188572  5472 ?        S    19:34   0:00 /usr/sbin/apache2 -k start
+root     12819  0.0  0.1  18444  1316 pts/0    R+   19:35   0:00 ps aux
+root     12820  0.0  0.0   9544   964 pts/0    S+   19:35   0:00 less
