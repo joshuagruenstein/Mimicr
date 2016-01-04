@@ -4,3 +4,8 @@ A website for text generation using recurrent neural networks.  Users can input 
 
 
 Built by [Michael Truell](https://github.com/truell20 "Michael Truell") and [Josh Gruenstein](https://github.com/joshuagruenstein "Josh Gruenstein").
+
+
+## Todo
+
+- Analytics (dashboard/cli for connected users, etc)
