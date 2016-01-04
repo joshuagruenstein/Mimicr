@@ -33,7 +33,6 @@ function previewfile(file) {
 		reader.readAsDataURL(file);
 	}  else {
 		holder.innerHTML = '<p id="innerLiner">File unsupported</p>';
-		console.log(file);
 	}
 }
 
@@ -59,7 +58,6 @@ function readfiles(file) {
 	var fr = new FileReader();
 	fr.onload = function() {
 		fileContents = fr.result;
-		console.log(fileContents)
 	};
 	fr.readAsText(file);
 }
@@ -71,7 +69,6 @@ function createThread(input, callback) {
 		method: "POST",
 		data: {input: input},
 		success: function(result) {
-			console.log("create: " + result)
 			if(callback != null) callback(result)
 		}
 	});
@@ -84,7 +81,6 @@ function sampleThread(index, callback) {
 		method: "GET",
 		data: {samplingIndex: index},
 		success: function(result) {
-			console.log("sample: " + result)
 			if(callback != null) callback(result)
 		}
 	});
@@ -97,7 +93,6 @@ function endThread(index, callback) {
 		method: "GET",
 		data: {endingIndex: index},
 		success: function(result) {
-			console.log("end: " + result)
 			if(callback != null) callback(result)
 		}
 	});
@@ -108,12 +103,11 @@ $(document).ready(function() {
 	var indiv = $("#indiv")
 	var timer = null
 	var index = -1
-	console.log("start")
 
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
 		var sample = fileContents
-		console.log(fileContents)
+
 		if (sample.length >= 500 || sample.length <= 5000000) {
 			errorBox.css("display", "none")
 
