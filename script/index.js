@@ -108,11 +108,13 @@ $(document).ready(function() {
 		var errorBox = $("#errorbox")
 		var sample = fileContents
 
-		if (sample.length >= 500 || sample.length <= 5000000) {
+		if (!sample) {
+			errorBox.text("must upload input file")
+			errorBox.css("display", "block")
+		} else if (sample.length >= 500 && sample.length <= 5000000) {
 			errorBox.css("display", "none")
-
-			$("#outdiv").css("display", "none")
-			$("#indiv").css("display", "none")	
+			outdiv.css("display", "none")
+			indiv.css("display", "none")
 
 			createThread(sample, function(result) {
 				index = parseInt(result)
@@ -131,7 +133,10 @@ $(document).ready(function() {
 
 			outdiv.css("display", "block")
 			indiv.css("display", "none")
-		} else errorBox.css("display", "block")
+		} else {
+			errorBox.text("input must be 500-5000000 chars")
+			errorBox.css("display", "block")
+		}
 	})
 
 	$('#stop').click(function() {
