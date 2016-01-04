@@ -1,6 +1,6 @@
 #Mimicr
 
-A website for text generation using recurrent neural networks.  Users can input text and a Python backend will train neural networks to mimic said text.
+A website for text generation using recurrent neural networks.  Users can input text and a JavaScript script will train neural networks to mimic said text.
 
 
 Built by [Michael Truell](https://github.com/truell20 "Michael Truell") and [Josh Gruenstein](https://github.com/joshuagruenstein "Josh Gruenstein").
@@ -8,4 +8,5 @@ Built by [Michael Truell](https://github.com/truell20 "Michael Truell") and [Jos
 
 ## Todo
 
-- Analytics (dashboard/cli for connected users, etc)
+- Store model in cookies
+- Analytics
