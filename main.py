@@ -5,6 +5,7 @@ import threading
 from time import sleep
 import numpy as np
 from CharacterModel import *
+from daemon import runner
 
 class WorkerThread(threading.Thread):
 	def __init__(self, input):
@@ -72,8 +73,9 @@ def application(request):
 	if endingIndex != 'null':
 		endThread(int(endingIndex))
 		return Response("Success")
-	return Response("null") 	
+	return Response("null") 
 
 if __name__ == '__main__':
-	from werkzeug.serving import run_simple
-	run_simple('localhost', 3000, application)
+	with daemon.DaemonContext():
+		from werkzeug.serving import run_simple
+		run_simple('localhost', 3000, application)
