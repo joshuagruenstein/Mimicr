@@ -148,6 +148,8 @@ $(document).ready(function() {
 	$('#stop').click(function() {
 		if(timer != null) clearTimeout(timer)
 
+		endThread(gIndex)
+
 		outdiv.css("display", "none")
 		indiv.css("display", "block")
 	})
