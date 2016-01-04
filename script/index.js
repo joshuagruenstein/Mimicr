@@ -116,18 +116,7 @@ $(document).ready(function() {
 			outdiv.css("display", "none")
 			indiv.css("display", "none")
 
-			createThread(sample, function(result) {
-				index = parseInt(result)
-
-				timer = setInterval(function() {
-					sampleThread(index, function(result) {
-						if(result !== "") {
-							result = result.replace(/(?:\r\n|\r|\n)/g, '<br />')
-							$("#inneroutbox").html(result)
-						}
-					})
-				}, 2000)
-			})
+			beginRNN(sample)
 
 			gIndex = index;
 
@@ -142,7 +131,7 @@ $(document).ready(function() {
 	$('#stop').click(function() {
 		if(timer != null) clearTimeout(timer)
 
-		endThread(gIndex)
+		stopRNN()
 
 		outdiv.css("display", "none")
 		indiv.css("display", "block")

@@ -49,7 +49,6 @@ function initVocab(sents, count_threshold) {
 	input_size = vocab.length + 1;
 	output_size = vocab.length + 1;
 	epoch_size = sents.length;
-	$("#prepro_status").text('found ' + vocab.length + ' distinct characters: ' + vocab.join(''));
 }
 
 function utilAddToModel(modelto, modelfrom) {
@@ -225,11 +224,11 @@ function tick() {
 	tick_iter += 1;
 	if(tick_iter % 50 === 0) {
 		// draw samples
-		$('#samples').html('');
+		$('#inneroutbox').html('');
 		for(var q=0;q<5;q++) {
 			var pred = predictSentence(model, true, sample_softmax_temperature);
 			var pred_div = '<div class="apred">'+pred+'</div>'
-			$('#samples').append(pred_div);
+			$('#inneroutbox').append(pred_div);
 		}
 	}
 }
@@ -266,13 +265,13 @@ function gradCheck() {
 
 var iid = null;
 
-function begin(input) {
+function beginRNN(input) {
 	reinit(input);
 	if(iid !== null) { clearInterval(iid); }
 	iid = setInterval(tick, 0); 
 }
 
-function stop() {
+function stopRNN() {
 	if(iid !== null) { clearInterval(iid); }
 	iid = null;
 }
