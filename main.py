@@ -5,7 +5,7 @@ import threading
 from time import sleep
 import numpy as np
 from CharacterModel import *
-from daemon import runner
+import daemon
 
 class WorkerThread(threading.Thread):
 	def __init__(self, input):
