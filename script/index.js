@@ -62,42 +62,6 @@ function readfiles(file) {
 	fr.readAsText(file);
 }
 
-function createThread(input, callback) {
-	$.ajax({
-		url: backendURL, 
-		async: true,
-		method: "POST",
-		data: {input: input},
-		success: function(result) {
-			if(callback != null) callback(result)
-		}
-	});
-}
-
-function sampleThread(index, callback) {
-	$.ajax({
-		url: backendURL, 
-		async: true,
-		method: "GET",
-		data: {samplingIndex: index},
-		success: function(result) {
-			if(callback != null) callback(result)
-		}
-	});
-}
-
-function endThread(index, callback) {
-	$.ajax({
-		url: backendURL, 
-		async: true,
-		method: "GET",
-		data: {endingIndex: index},
-		success: function(result) {
-			if(callback != null) callback(result)
-		}
-	});
-}
-
 $(document).ready(function() {	
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
@@ -136,12 +100,6 @@ $(document).ready(function() {
 		outdiv.css("display", "none")
 		indiv.css("display", "block")
 	})
-
-	window.onbeforeunload = function(e) {
-		if (outdiv.css("display") === "block") {
-			endThread(gIndex)
-		} 
-	}
 
 	outdiv.css("display", "none")
 	indiv.css("display", "block")
