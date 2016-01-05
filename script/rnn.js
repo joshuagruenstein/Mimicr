@@ -224,11 +224,15 @@ function tick() {
 	tick_iter += 1;
 	if(tick_iter % 50 === 0) {
 		// draw samples
-		$('#inneroutbox').html('');
-		for(var q=0;q<5;q++) {
+		$('#outbox').html('');
+		for(var q=0;q<10;q++) {
 			var pred = predictSentence(model, true, sample_softmax_temperature);
 			var pred_div = '<div class="apred">'+pred+'</div>'
-			$('#inneroutbox').append(pred_div);
+			if (q<5) {
+				$('#outbox').append(pred_div);
+				$('#textContainer').append(pred_div);
+			}
+			else $('#textContainer').append(pred_div);
 		}
 	}
 }
@@ -274,4 +278,10 @@ function beginRNN(input) {
 function stopRNN() {
 	if(iid !== null) { clearInterval(iid); }
 	iid = null;
+}
+
+function resumeRNN() {
+	if(iid === null) {
+      iid = setInterval(tick, 0); 
+    }
 }

@@ -65,7 +65,6 @@ function readfiles(file) {
 $(document).ready(function() {	
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
-	var timer = null
 	var index = -1
 
 	$('#begin').click(function() {
@@ -93,12 +92,19 @@ $(document).ready(function() {
 	})
 
 	$('#stop').click(function() {
-		if(timer != null) clearTimeout(timer)
-
 		stopRNN()
+		window.location.href="#output"
+	})
 
+	$('#resume').click(function() {
+		resumeRNN()
+		window.location.href="#close"
+	})
+
+	$('#quit').click(function() {
 		outdiv.css("display", "none")
 		indiv.css("display", "block")
+		window.location.href="#close"
 	})
 
 	outdiv.css("display", "none")
