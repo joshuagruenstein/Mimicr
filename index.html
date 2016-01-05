@@ -38,10 +38,7 @@
 				<div class="six column u-pull-right"></div>
 			</div>
 			<div id="holder"><p id="innerLiner">Drop text file here</p></div> 
- 			<p id="upload" class="hidden"><label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
- 			<p id="filereader">File API &amp; FileReader API not supported</p>
-			<p id="formdata">XHR2's FormData is not supported</p>
-			<p id="progress">XHR2's upload progress isn't supported</p>
+ 			<p id="upload" style="display:none"><label>Drag &amp; drop not supported, but you can still upload via this input field:<br><input type="file"></label></p>
 			<input type="button" id="begin" value="begin" class="button-primary" />
 		</div>
 		<div class="six columns maincol" id="outdiv">
@@ -69,7 +66,7 @@
 
 <div id="output" class="modalDialog">
 	<div>
-		<h3>Output Text</h3>
+		<h3 style="margin-bottom:.1rem">Final Output</h3>
 		<div id="textContainer">
 		</div>
 		<div id="stopResumeContainer">
@@ -94,7 +91,7 @@
 	</div>
 </div>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="lib/jquery.min.js"></script>
 <script src="lib/recurrent.js"></script>
 <script src="script/rnn.js"></script>
 <script src="script/index.js"></script>

@@ -1,28 +1,12 @@
-var backendURL = "route.php"
-
 var holder = document.getElementById('holder'),
 tests = {
 	filereader: typeof FileReader != 'undefined',
 	dnd: 'draggable' in document.createElement('span'),
-	formdata: !!window.FormData,
-	progress: "upload" in new XMLHttpRequest
 }, 
-support = {
-	filereader: document.getElementById('filereader'),
-	formdata: document.getElementById('formdata'),
-	progress: document.getElementById('progress')
-},
 acceptedTypes = {
 	'text/plain': true
 },
 fileupload = document.getElementById('upload');
-"filereader formdata progress".split(' ').forEach(function (api) {
-	if (tests[api] === false) {
-		support[api].className = 'fail';
-	} else {
-		support[api].className = 'hidden';
-	}
-});
 
 function previewfile(file) {
 	if (tests.filereader === true && acceptedTypes[file.type] === true) {
@@ -65,7 +49,6 @@ function readfiles(file) {
 $(document).ready(function() {	
 	var outdiv = $("#outdiv")
 	var indiv = $("#indiv")
-	var index = -1
 
 	$('#begin').click(function() {
 		var errorBox = $("#errorbox")
@@ -76,12 +59,10 @@ $(document).ready(function() {
 			errorBox.css("display", "block")
 		} else if (sample.length >= 500 && sample.length <= 5000000) {
 			errorBox.css("display", "none")
-			outdiv.css("display", "none")
 			indiv.css("display", "none")
 
+			$('#outbox').text('Loading...');
 			beginRNN(sample)
-
-			gIndex = index;
 
 			outdiv.css("display", "block")
 			indiv.css("display", "none")
