@@ -8,6 +8,4 @@ Built by [Michael Truell](https://github.com/truell20 "Michael Truell") and [Jos
 ## Todo
 
 - Store model in cookies
-- Get more output when stopped
-	- Ability to reset or continue from that view
-- Analytics
+- Dropdown/search for Project Gutenberg
