@@ -1,4 +1,4 @@
-#Mimicr
+# Mimicr
 
 A website for text generation using recurrent neural networks.  Users can input text and a JavaScript script will train neural networks to mimic said text.
 
